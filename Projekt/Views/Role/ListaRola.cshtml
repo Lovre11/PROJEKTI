@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+@{
+    ViewBag.Title = "Role";
+}
+
+<h2>Lista rola</h2>
+
+@Html.ActionLink("Kreiraj rolu", "Create")
+
+<hr />
+
+<div>
+    @foreach (var item in Model)
+    {
+        <p>
+            <strong>@item.Name |</strong>
+            <span onclick="return confirm('Želite li izbrisati rolu?')">
+                <a href="/Role/Delete?nazivRole=@item.Name" class="delLink" style="color:red;">Izbriši rolu</a>
+            </span>
+        </p>
+    }
+</div>
+

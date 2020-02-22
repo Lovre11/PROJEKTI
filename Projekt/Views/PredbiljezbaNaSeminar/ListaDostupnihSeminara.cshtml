@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Projekt.Models.Seminar>
+
+@{
+    ViewBag.Title = "Dostupni Seminari";
+}
+
+<br />
+@using (Html.BeginForm("ListaDostupnihSeminara", "PredbiljezbaNaSeminar", FormMethod.Get))
+{
+    <b>Pretraga:</b>
+    @Html.TextBox("rijec") 
+    <input type="submit" value="Pretraži" />
+}
+<br />
+<table class="table table-striped table-hover">
+    <tr>
+
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Predavac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datum)
+        </th>
+       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.ActionLink("Odaberi", "PredbiljezbaNaSeminar", new { id = item.IdSeminar }, htmlAttributes: new { @class = "btn btn-xs btn-default", @role = "button" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Predavac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Datum)
+        </td>
+
+    </tr>
+}
+
+</table>

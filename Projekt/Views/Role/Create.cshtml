@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Kreiraj rolu</h2>
+
+@Html.ActionLink("Lista rola", "ListaRola")
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div>
+        Naziv role
+    </div>
+    <p>
+        @Html.TextBox("nazivRole")
+    </p>
+    <input type="submit" value="Kreiraj" />
+}
+

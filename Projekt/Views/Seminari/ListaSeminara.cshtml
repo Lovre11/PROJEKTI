@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Projekt.Models.Seminar>
+
+@{
+    ViewBag.Title = "Seminari";
+}
+
+<br />
+
+@using (Html.BeginForm("ListaSeminara", "Seminari", FormMethod.Get))
+{
+    <b>Pretraga:</b>
+    @Html.TextBox("rijec")
+    <input type="submit" value="Pretraži" />
+}
+<br />
+
+<p>
+    @Html.ActionLink("Novi", "Create", "Seminari", htmlAttributes: new { @class = "btn btn-sm btn-success", @role = "button" })
+</p>
+<table class="table table-striped table-hover">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Predavac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrojPolaznika)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Popunjen)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Uredi", "Edit", new { id = item.IdSeminar }, htmlAttributes: new { @class = "btn btn-xs btn-default", @role = "button" })
+                @Html.ActionLink("Detalji", "Details", new { id = item.IdSeminar }, htmlAttributes: new { @class = "btn btn-xs btn-default", @role = "button" })
+                @Html.ActionLink("Obriši", "Delete", new { id = item.IdSeminar }, htmlAttributes: new { @class = "btn btn-xs btn-default", @role = "button" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Predavac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrojPolaznika)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Popunjen)
+            </td>
+
+        </tr>
+    }
+
+</table>
